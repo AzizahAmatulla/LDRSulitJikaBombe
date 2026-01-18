@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Permintaan Berbaikan</title>
+
+  <style>
+    /* Reset dasar */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Video background */
+    .video-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+      background: #000; /* fallback */
+    }
+
+    .video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* biar full layar */
+    }
+
+    /* Overlay biar teks lebih kebaca */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .card {
+      width: min(900px, 95vw);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 28px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .message h1 {
+      font-size: clamp(22px, 4vw, 34px);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .message p {
+      font-size: clamp(16px, 2.3vw, 20px);
+      margin: 10px 0;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+
+    .btn-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      min-height: 70px; /* supaya saat tombol 'Tidak' kabur, area tetap rapi */
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.08s ease;
+      user-select: none;
+    }
+
+    button:active { transform: scale(0.98); }
+
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #no {
+      background-color: #f44336;
+      color: white;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background video -->
+  <div class="video-bg">
+    <!-- GANTI src sesuai nama file videomu -->
+    <video autoplay muted loop playsinline>
+      <source src="bg.mp4" type="video/mp4" />
+      Browser kamu tidak mendukung video.
+    </video>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Konten -->
+  <div class="card">
+    <div class="message">
+      <h1>Maaf ya yoyo sayang...</h1>
+      <p>liat bahagianya kita sayang kalau lagi baku sayang nda baku bombe, nanna rindu sekaliiii sama cowonyaa</p>
+      <p>nanna memang pakbal suka bikin ballisi cowonya, tapi saya sayang sekali sama cowoku. maukah cowoku berbaikan dan baku sayang sama cewenya lagi?</p>
+      <h2>PLIIISSS SAYANGGG 🥺🥺🥺🥺...</h2>
+    </div>
+
+    <div class="btn-row" id="btnRow">
+      <button id="yes" onclick="alert('Yay! Terima kasih, sayang! Aku sayang kamu! 💕')">Ya</button>
+      <button id="no" onmouseover="moveNoButton()">Tidak</button>
+    </div>
+  </div>
+
+  <script>
+    function moveNoButton() {
+      const noButton = document.getElementById('no');
+
+      // Biar tombol bisa "kabur" ke seluruh layar
+      const padding = 16;
+      const maxX = window.innerWidth - noButton.offsetWidth - padding;
+      const maxY = window.innerHeight - noButton.offsetHeight - padding;
+
+      const x = Math.random() * Math.max(maxX, 0);
+      const y = Math.random() * Math.max(maxY, 0);
+
+      noButton.style.position = 'fixed';
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
+      noButton.style.zIndex = '10';
+    }
+  </script>
+</body>
+</html>
