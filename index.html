@@ -87,11 +87,6 @@
     }
     button:active { transform: scale(0.98); }
 
-    #playAudio {
-      background: #1e88e5;
-      color: #fff;
-    }
-
     #yes {
       background-color: #4CAF50;
       color: white;
@@ -121,30 +116,30 @@
     <!-- VIDEO DI ATAS TEKS -->
     <div class="video-wrap">
       <video id="myVideo" controls playsinline preload="metadata">
-        <!-- GANTI src sesuai nama file videomu -->
         <source src="bg.mp4" type="video/mp4" />
         Browser kamu tidak mendukung video.
       </video>
     </div>
 
-    <!-- TOMBOL WAJIB UNTUK AUDIO (SUPAYA PASTI MUNCUL) -->
-    <div class="controls">
-      <button id="playAudio" onclick="playWithSound()">Putar Video</button>
-    </div>
-
     <div class="message" style="margin-top:16px;">
-      <h1>Maaf ya yoyo sayang, kalau nanna suka bikin cowonya ballisi...</h1>
+      <h1>Maaf ya yoyo sayang...</h1>
       <p>liat bahagianya kita sayang kalau lagi baku sayang nda baku bombe, nanna rindu sekaliiii sama cowonyaa</p>
-      <p>Aku salah, maukah kamu maafin aku dan kita berbaikan?</p>
+      <p>nanna memang pakbal suka bikin ballisi cowonya, tapi saya sayang sekali sama cowoku. maukah cowoku berbaikan dan baku sayang sama cewenya lagi?</p>
+      <h2>PLIIISSS SAYANGGG 🥺🥺🥺🥺...</h2>
     </div>
 
     <div class="btn-row">
-      <button id="yes" onclick="alert('Yeeeaaayyy! Terima kasih sayangkuuu, sayang cowoku banyak". ILOVEYOUUU!!!!! 💕')">Ya</button>
+      <!-- tombol YA sekarang panggil function -->
+      <button id="yes" onclick="alertYes()">Ya</button>
       <button id="no" onmouseover="moveNoButton()">Tidak</button>
     </div>
   </div>
 
   <script>
+    function alertYes() {
+      alert("Yeeeaaayyy! Terima kasih sayangkuuu, sayang cowoku banyak. I LOVE YOUUU!!!!! 💕");
+    }
+
     function moveNoButton() {
       const noButton = document.getElementById('no');
       const padding = 16;
@@ -159,18 +154,6 @@
       noButton.style.top = y + 'px';
       noButton.style.zIndex = '999';
     }
-
-    async function playWithSound() {
-      const v = document.getElementById('myVideo');
-      try {
-        v.muted = false;   // pastikan tidak mute
-        v.volume = 1.0;    // volume penuh
-        await v.play();    // play setelah klik user => audio diizinkan
-      } catch (e) {
-        alert("Browser masih memblokir audio. Coba tap tombol play di video atau matikan mode senyap.");
-      }
-    }
   </script>
 </body>
 </html>
-
